@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web/utils/util.dart';
+import 'package:portfolio_web/widgets/body.dart';
+import 'package:portfolio_web/widgets/button_row.dart';
 import 'package:portfolio_web/widgets/contact_button.dart';
 
 class Portfolio extends StatelessWidget {
@@ -35,47 +38,23 @@ class Portfolio extends StatelessWidget {
             buttonText: 'Contact me',
             icon: Icon(Icons.send_sharp),
             onPressed: () {
-              print('hellow world');
+              launchMailto();
             },
           )
         ],
       ),
       body: Stack(
-        children: [Body()],
-      ),
-    );
-  }
-}
-
-class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: Container(
-            color: Colors.white,
-            child: Column(
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Opacity(opacity: 0.5, child: Image.asset('headshot.png')),
-                    Text('I\'m Mark\nA software developer\nand teacher')
-                  ],
-                )
-              ],
+        children: [
+          Body(),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(48.0),
+              child: SizedBox(height: 59, child: ButtonRow()),
             ),
           ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Container(),
-        )
-      ],
+        ],
+      ),
     );
   }
 }
